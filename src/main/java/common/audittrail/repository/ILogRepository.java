@@ -10,7 +10,7 @@ import java.util.Collection;
 
 public interface ILogRepository extends JpaRepository<Log, Long> {
 
-    @Query("SELECT e FROM Log e WHERE e.SystemId = :SystemId AND e.Timestamp >= :InitTimestamp AND e.Timestamp <= :EndTimestamp")
-    Collection<Log> FindSystemLog(@Param("SystemId") String SystemId, @Param("InitTimestamp") long InitTimestamp, @Param("EndTimestamp") long EndTimestamp);
+    @Query("SELECT e FROM Log e WHERE e.systemName = :sysname AND e.timestamp >= :init AND e.timestamp <= :endt")
+    Collection<Log> FindSystemLog(@Param("sysname") String sysname, @Param("init") Long init, @Param("endt") Long endt);
 
 }
