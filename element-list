@@ -1,0 +1,5 @@
+common.audittrail
+common.audittrail.controllers
+common.audittrail.models
+common.audittrail.repository
+common.audittrail.services
