@@ -20,8 +20,6 @@ public class PlatformService {
             platform.setSystemName(platformDetails.getSystemName());
             platform.setHost(platformDetails.getHost());
             platform.setHealthEndpoint(platformDetails.getHealthEndpoint());
-            platform.setCondition(platformDetails.getCondition());
-            platform.setLastCheckup(platformDetails.getLastCheckup());
             return Optional.of(platformRepository.save(platform));
         }
         return Optional.empty();

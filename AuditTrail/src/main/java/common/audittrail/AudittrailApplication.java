@@ -1,6 +1,5 @@
 package common.audittrail;
 
-import common.audittrail.models.enums.Condition;
 import common.audittrail.models.entities.Platform;
 import common.audittrail.repository.IPlatformRepository;
 import jakarta.annotation.PostConstruct;
@@ -31,8 +30,6 @@ public class AudittrailApplication {
 			platform.systemName = environment.getProperty("system.name", "AuditTrail");
 			platform.host = String.format("%s:%d", host, port);
 			platform.healthEndpoint = "Platform/AuditTrail";
-			platform.condition = Condition.UP;
-			platform.lastCheckup = System.currentTimeMillis();
 
 			platformRepository.save(platform);
 		}catch (Exception e){

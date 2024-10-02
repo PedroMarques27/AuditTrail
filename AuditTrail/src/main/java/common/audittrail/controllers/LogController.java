@@ -30,9 +30,10 @@ public class LogController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    public ResponseEntity DeleteLogs(){
-        logRepository.deleteAll();
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity DeleteLogById(@PathVariable Long id){
+        logRepository.deleteById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
@@ -47,25 +48,10 @@ public class LogController {
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
     @RequestMapping(value = "/{SystemName}", method = RequestMethod.GET)
-    public Optional<List<Log>> GetLogs(@PathVariable String SystemName,
-                                       @RequestParam(required = false) Long initTimestamp,
-                                       @RequestParam(required = false) Long endTimestamp)
+    public ResponseEntity<Collection<Log>> GetLogs(@PathVariable String SystemName)
     {
-        if (initTimestamp == null) {
-            initTimestamp = 0L;
-        }
-
-        if (endTimestamp == null) {
-            endTimestamp = System.currentTimeMillis();
-        }
-
-        Optional<Collection<Log>> logs = Optional.of(logRepository.FindSystemLog(SystemName, initTimestamp, endTimestamp));
-        Long finalEndTimestamp = endTimestamp;
-        Long finalInitTimestamp = initTimestamp;
-        return logs.map(logsCollection ->
-                logsCollection.stream()
-                        .filter(log -> log.getTimestamp() < finalEndTimestamp && log.getTimestamp() > finalInitTimestamp) // Using getter method
-                        .collect(Collectors.toList())
-        );
+        Optional<Collection<Log>> logs = Optional.of(logRepository.FindSystemLog(SystemName));
+        return logs.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 }

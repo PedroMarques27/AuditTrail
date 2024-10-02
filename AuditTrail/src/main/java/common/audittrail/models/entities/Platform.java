@@ -1,6 +1,5 @@
 package common.audittrail.models.entities;
 
-import common.audittrail.models.enums.Condition;
 import jakarta.persistence.*;
 
 @Entity
@@ -19,21 +18,13 @@ public class Platform {
     @Column
     public String healthEndpoint;
 
-    @Column
-    public Condition condition;
-
-    @Column
-    public long lastCheckup;
-
     public Platform() {
     }
 
-    public Platform(String systemName, String host, String healthEndpoint, Condition condition, long lastCheckup) {
+    public Platform(String systemName, String host, String healthEndpoint) {
         systemName = systemName;
         host = host;
         healthEndpoint = healthEndpoint;
-        condition = condition;
-        lastCheckup = lastCheckup;
     }
 
     public Long getId() {
@@ -66,21 +57,5 @@ public class Platform {
 
     public void setHealthEndpoint(String healthEndpoint) {
         this.healthEndpoint = healthEndpoint;
-    }
-
-    public Condition getCondition() {
-        return condition;
-    }
-
-    public void setCondition(Condition condition) {
-        this.condition = condition;
-    }
-
-    public long getLastCheckup() {
-        return lastCheckup;
-    }
-
-    public void setLastCheckup(long lastCheckup) {
-        this.lastCheckup = lastCheckup;
     }
 }
