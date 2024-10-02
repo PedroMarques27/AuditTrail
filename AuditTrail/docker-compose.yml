@@ -1,0 +1,28 @@
+services:
+  audittrail:
+    image: audittrail:latest  # Replace with your built image name
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"  # Map port 8080 on the host to port 8080 in the container
+    environment:
+      # H2-specific configurations for in-memory database
+      SPRING_DATASOURCE_URL: jdbc:h2:file:./data/audittraildb;DB_CLOSE_ON_EXIT=FALSE;DB_CLOSE_DELAY=-1  # In-memory H2 database
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.h2.Driver
+      SPRING_DATASOURCE_USERNAME: sa
+      SPRING_DATASOURCE_PASSWORD:
+      SPRING_H2_CONSOLE_ENABLED: true  # Enable the H2 web console
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+      SPRING_APPLICATION_NAME: AuditTrail
+      SPRING_SERVER_ADDRESS: localhost
+      SPRING_SERVER_PORT: 8080
+      SPRING_LOGGING_LEVEL_ORG_SPRINGFRAMEWORK: DEBUG
+      SYSTEM_NAME: AuditTrail
+      
+    networks:
+      - audittrail-network
+
+networks:
+  audittrail-network:

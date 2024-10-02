@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"common.audittrail"},{"l":"common.audittrail.controllers"},{"l":"common.audittrail.models"},{"l":"common.audittrail.repository"},{"l":"common.audittrail.services"}];updateSearchResults();
