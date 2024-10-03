@@ -1,6 +1,6 @@
 package common.audittrail.models.enums;
 
-public enum HttpCode {
+public enum HttpRequestCode {
     GET,
     POST,
     PUT,

@@ -1,5 +1,6 @@
 package common.audittrail.models.entities;
 
+import common.audittrail.models.enums.HttpRequestCode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
 
@@ -7,7 +8,7 @@ import jakarta.persistence.Embeddable;
 public class RequestInformation {
 
     @Column
-    private String method;
+    private HttpRequestCode method;
 
     @Column
     private String url;
@@ -23,7 +24,7 @@ public class RequestInformation {
 
     public RequestInformation() {}
 
-    public RequestInformation(String method, String url, String clientIp, String headers, String requestBody) {
+    public RequestInformation(HttpRequestCode method, String url, String clientIp, String headers, String requestBody) {
         this.method = method;
         this.url = url;
         this.clientIp = clientIp;
@@ -31,11 +32,11 @@ public class RequestInformation {
         this.requestBody = requestBody;
     }
 
-    public String getMethod() {
+    public HttpRequestCode getMethod() {
         return method;
     }
 
-    public void setMethod(String method) {
+    public void setMethod(HttpRequestCode method) {
         this.method = method;
     }
 

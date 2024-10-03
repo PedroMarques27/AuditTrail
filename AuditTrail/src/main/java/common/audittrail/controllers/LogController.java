@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Logs") // Base URL mapping
+@RequestMapping("/api/v1.0.1/Logs") // Base URL mapping
 public class LogController {
 
     @Autowired

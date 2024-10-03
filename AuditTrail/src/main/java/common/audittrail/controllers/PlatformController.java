@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/Platform") // Base URL mapping
+@RequestMapping("/api/v1.0.1/Platform") // Base URL mapping
 public class PlatformController {
     @Autowired
     IPlatformRepository platformRepository;

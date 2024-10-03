@@ -1,31 +1,31 @@
 package common.audittrail.models.entities;
 
-import common.audittrail.models.enums.HttpCode;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import org.springframework.http.HttpStatus;
 
 @Embeddable
 public class ResponseInformation {
 
     @Column
-    private HttpCode statusCode;
+    private HttpStatus statusCode;
 
     @Column
     private String responseBody;
 
     public ResponseInformation() {}
 
-    public ResponseInformation(HttpCode statusCode, String responseBody) {
+    public ResponseInformation(HttpStatus statusCode, String responseBody) {
         this.statusCode = statusCode;
         this.responseBody = responseBody;
     }
 
 
-    public HttpCode getStatusCode() {
+    public HttpStatus getStatusCode() {
         return statusCode;
     }
 
-    public void setStatusCode(HttpCode statusCode) {
+    public void setStatusCode(HttpStatus statusCode) {
         this.statusCode = statusCode;
     }
 
